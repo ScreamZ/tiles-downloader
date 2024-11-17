@@ -1,0 +1,23 @@
+{
+  "name": "@codingspark/tiles-downloader",
+  "description": "A small library to download map tiles",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "ci": "pnpm run build && pnpm run format && pnpm run check-exports",
+    "format": "biome check --write",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "prepublishOnly": "pnpm run ci"
+  },
+  "dependencies": {
+    "p-throttle": "^6.2.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.0",
+    "@biomejs/biome": "1.9.4",
+    "@changesets/cli": "^2.27.9",
+    "@types/bun": "^1.1.13"
+  }
+}
