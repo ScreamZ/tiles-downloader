@@ -5,7 +5,17 @@
 
 This module allows you to download tiles from a tile server. Therefore you can use it to download tiles from OpenStreetMap, etc. for offline use or caching.
 
+## Installation
+
+```sh
+npm install @codingspark/tiles-downloader
+```
+
 ## Example usage
+
+### Tiles downloading
+
+Generic tiles download using `fetch` that works in browser and most server environments.
 
 ```ts
 import path from "node:path";
@@ -37,4 +47,22 @@ await downloadTiles(
     Bun.write(outputPath, buffer);
   }
 );
+```
+
+### Generate tiles for a specific area
+
+This can be useful if you want to only get tiles for a specific need or you want to manage downloading tiles by yourself.
+
+```ts
+import { computeTiles } from "@codingspark/tiles-downloader";
+
+const tiles = computeTiles({
+  bounds: {
+    minLat: 43.5704,
+    maxLat: 43.645,
+    minLon: 3.8095,
+    maxLon: 3.923,
+  },
+  zoomLevels: [14, 15, 16],
+});
 ```
